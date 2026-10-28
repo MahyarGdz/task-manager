@@ -1,0 +1,125 @@
+.persian-calendar-shell {
+  width: 294px;
+  max-width: 100%;
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+.persian-calendar {
+  --rdp-accent-color: var(--brand);
+  --rdp-accent-background-color: var(--brand-soft);
+  --rdp-day-height: 40px;
+  --rdp-day-width: 42px;
+  --rdp-day_button-height: 36px;
+  --rdp-day_button-width: 38px;
+  --rdp-day_button-border-radius: 8px;
+  --rdp-selected-border: 2px solid transparent;
+  --rdp-range_middle-background-color: var(--brand-soft);
+  --rdp-range_middle-color: var(--brand);
+  --rdp-range_start-color: var(--on-brand);
+  --rdp-range_end-color: var(--on-brand);
+  --rdp-weekday-opacity: 1;
+  --rdp-outside-opacity: 0.35;
+  font-size: 13px;
+}
+
+.persian-calendar .rdp-months,
+.persian-calendar .rdp-month {
+  width: 100%;
+}
+
+.persian-calendar .rdp-month_caption {
+  height: 46px;
+  margin-bottom: 8px;
+}
+
+.persian-calendar .rdp-dropdown_root {
+  border-radius: 6px;
+  background: var(--subtle);
+  padding: 5px 6px;
+}
+
+.persian-calendar .rdp-caption_label {
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.persian-calendar .rdp-dropdown {
+  cursor: pointer;
+  font: inherit;
+}
+
+.persian-calendar .rdp-dropdown option {
+  color: var(--ink);
+  background: var(--surface);
+  font-family: var(--font-sans);
+}
+
+.persian-calendar .rdp-dropdown:focus-visible ~ .rdp-caption_label,
+.persian-calendar button:focus-visible {
+  border-radius: 6px;
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.persian-calendar .rdp-month_grid {
+  width: 100%;
+}
+
+.persian-calendar .rdp-weekday {
+  border-bottom: 1px solid var(--divider);
+  padding-block: 8px;
+  color: var(--ink-3);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.persian-calendar .rdp-weekday:last-child,
+.persian-calendar .persian-calendar-friday:not(.rdp-selected) {
+  color: var(--negative);
+}
+
+.persian-calendar .rdp-day_button {
+  margin-inline: auto;
+  transition: background-color 120ms ease;
+}
+
+.persian-calendar .rdp-day_button:hover,
+.persian-calendar .rdp-button_previous:hover,
+.persian-calendar .rdp-button_next:hover {
+  background: var(--hover);
+}
+
+.persian-calendar .rdp-selected:not(.rdp-range_middle) .rdp-day_button {
+  background: var(--brand);
+  color: var(--on-brand);
+  font-weight: 600;
+}
+
+.persian-calendar .rdp-today:not(.rdp-selected) .rdp-day_button {
+  border: 1px solid var(--brand);
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.persian-calendar .rdp-outside {
+  color: var(--ink-3);
+}
+
+.persian-calendar-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--divider);
+  margin-top: 10px;
+  padding-top: 10px;
+  color: var(--ink-3);
+  font-size: 11px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .persian-calendar .rdp-day_button {
+    transition: none;
+  }
+}

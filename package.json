@@ -1,0 +1,108 @@
+{
+  "name": "task-manager",
+  "author": "Mahyargdz",
+  "productName": "Pishro",
+  "version": "0.1.0",
+  "description": "Pishro: personal task manager (desktop, offline-first)",
+  "private": true,
+  "main": "./out/main/index.js",
+  "engines": {
+    "node": ">=24.12"
+  },
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "start": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "lint": "biome check src tests",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm run lint && npm test",
+    "dist:win": "npm run build && electron-builder --win --x64",
+    "dist:mac": "npm run build && electron-builder --mac --dir",
+    "dist:linux": "npm run build && electron-builder --linux AppImage --x64",
+    "dist:all": "npm run build && electron-builder --mac --win --linux AppImage --x64",
+    "format": "biome format --write src tests",
+    "brand:export": "electron scripts/export-brand.cjs"
+  },
+  "dependencies": {
+    "@mikro-orm/core": "7.2.5",
+    "@mikro-orm/sqlite": "7.2.5",
+    "better-sqlite3": "13.0.3",
+    "kysely": "0.29.6",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@daypicker/persian": "10.0.2",
+    "@daypicker/react": "10.0.2",
+    "@dnd-kit/core": "6.3.1",
+    "@dnd-kit/sortable": "10.0.0",
+    "@dnd-kit/utilities": "3.2.2",
+    "@hookform/resolvers": "5.9.1",
+    "@internationalized/date": "3.12.4",
+    "@tailwindcss/vite": "4.3.3",
+    "@tanstack/react-query": "5.104.2",
+    "@tanstack/react-router": "1.170.44",
+    "@types/better-sqlite3": "7.6.13",
+    "@types/node": "24.19.2",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "@vitejs/plugin-react": "5.2.0",
+    "electron": "44.9.3",
+    "electron-builder": "26.17.0",
+    "electron-vite": "5.0.0",
+    "lucide-react": "1.55.0",
+    "react": "19.2.9",
+    "react-aria-components": "1.22.1",
+    "react-dom": "19.2.9",
+    "react-hook-form": "7.90.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "6.0.3",
+    "vite": "7.3.7",
+    "vitest": "4.1.12"
+  },
+  "build": {
+    "appId": "dev.mahyargdz.pishro",
+    "productName": "Pishro",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "out/**",
+      "package.json"
+    ],
+    "asar": true,
+    "npmRebuild": false,
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false
+    },
+    "mac": {
+      "icon": "build/icon.icns",
+      "category": "public.app-category.productivity",
+      "target": [
+        "dir"
+      ]
+    },
+    "extraResources": [
+      {
+        "from": "build/icon.png",
+        "to": "icon.png"
+      }
+    ]
+  },
+  "type": "module",
+  "packageManager": "pnpm@12.6.0"
+}
