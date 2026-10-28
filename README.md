@@ -29,6 +29,20 @@ pnpm dev
 pnpm check   # typecheck + lint + tests
 ```
 
+## Build
+
+```bash
+pnpm dist:mac        # Apple Silicon: dist/Pishro-<version>-arm64.dmg + .zip
+pnpm dist:mac:x64    # Intel Mac
+pnpm dist:mac:dir    # unpacked .app only, fastest for a local test
+pnpm dist:win        # Windows NSIS installer
+pnpm dist:linux      # AppImage
+pnpm dist:all        # everything above
+```
+
+Mac builds are ad-hoc signed (no Apple developer certificate, not notarized). A DMG built on this
+machine opens normally; one downloaded from elsewhere needs right-click → Open the first time.
+
 If `pnpm dev` says "Electron uninstall", fetch the binary once: `node node_modules/electron/install.js`.
 `TASKS_DATA_DIR=/some/dir pnpm dev` runs against a throwaway database.
 
